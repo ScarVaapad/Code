@@ -1,0 +1,76 @@
+/*
+===============================
+Custom Styles
+===============================
+*/
+body {
+	font-family: 'Lato', serif;
+    font-weight: 400;
+	font-size: 1em;
+	line-height: 1.5em;
+	margin: 0;
+	padding: 1em;
+	color: #202021;
+	background-color: #56a0d3;
+}
+h1,h2,h3,h4 {
+	font-family: 'Lato', serif;
+	font-weight: 500;
+}
+ul {
+	list-style: none;
+}
+/**,
+*:before,
+*:after {
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+}*/
+#header h1 {
+	text-align: center;
+	color: #fff;
+}
+#year-slider {
+	width: 50%;
+}
+#geo-map {
+	padding: 0.5em;
+}
+.title {
+	text-align: center;
+	background-color: #56a0d3;
+	color: #fff;
+	border-radius: 1em;
+	padding: 0.4em;
+	font-size: 1rem;
+}
+.geo-flex-container, .chart-flex-container {
+	display: flex;	
+}
+.geo-flex-container, .charts-panel {
+	padding: 1em;
+	background-color: #fff;
+	margin: 0.5em;
+}
+.geo-map-panel, .chart-area {
+	flex:3;
+	margin: 0.5em;
+}
+.control-panel, .tab-controls {
+	flex: 1;
+	margin: 0.5em;
+}
+#state-set, .tab-controls fieldset {
+	border: 0;
+}
+#state-set label, .tab-controls label, #subgroups label{
+	display: block;
+    width: 80%;
+    margin-bottom: 0.2em;
+    text-align: left;
+}
+.demo-form, #subgroups {
+	margin:0.2em;
+}
+
