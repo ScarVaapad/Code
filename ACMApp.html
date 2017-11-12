@@ -32,7 +32,7 @@
 			<h3 class="title">Select Focus States</h3>
 			<fieldset id="state-set">
 				<label for="all-states">All</label>
-				<input type="radio" name="states" id="all-states">
+				<input type="radio" name="states" id="all-states" checked="true">
 				<label for="rep">Republican States</label>
 				<input type="radio" name="states" id="rep">
 				<label for="dem">Democrat States</label>
@@ -71,65 +71,43 @@
 		</div>
 	</div>	
 	<div class="charts-panel">
-		<div id="chart-tabs">
-			<ul>
-				<li><a href="#tabs-1">Employee contribution and deductible</a></li>
-				<li><a href="#tabs-2">Employee Total Premium Annual Increase</a></li>
-				<li><a href="#tabs-3">Employee Total vs Household Income Median</a></li>
-			</ul>
-			<div id="tabs-1">
-				<div class="chart-flex-container">
-					<div id="tab-1-chart" class="chart-area">
-						<!--Employee contribution and deductible -->
-					</div>
-					<div class="tab-controls">
-						<h3 class="title">Visualization Option</h3>
-						<fieldset>
-							<label for="tab-1-trend">Trend</label>
-							<input type="radio" name="tab-1-viz-option" id="tab-1-trend">
-							<label for="tab-1-distribution">Distribution</label>
-							<input type="radio" name="tab-1-viz-option" id="tab-1-distribution">
-						</fieldset>
-						<h3 class="title">Insurance Premium Comparison</h3>
-						<div id="tab-1-comparison"><!--Insurance Premium Comparison --></div>
-					</div>		
-				</div>			
-			</div>
-			<div id="tabs-2">
-				<div class="chart-flex-container">
-					<div id="tab-2-chart" class="chart-area">
-						<!--Employee Total Premium Annual Increase -->
-					</div>
-					<div class="tab-controls">
-						<h3 class="title">Visualization Option</h3>
-						<fieldset id="display-options">
-							<label for="tab-2-trend">Trend</label>
-							<input type="radio" name="tab-2-viz-option" id="tab-2-trend">
-							<label for="tab-2-distribution">Distribution</label>
-							<input type="radio" name="tab-2-viz-option" id="tab-2-distribution">
-						</fieldset>
-						<h3 class="title">Insurance Premium Comparison</h3>
-						<div id="tab-2-comparison"><!--Insurance Premium Comparison --></div>
-					</div>		
-				</div>				
-			</div>
-			<div id="tabs-3">
-				<div class="chart-flex-container">
-					<div id="tab-3-chart" class="chart-area">
-						<!--Employee Total vs Household Income Median -->
-					</div>
-					<div class="tab-controls">
-						<h3 class="title">Visualization Option</h3>
-						<fieldset>
-							<label for="tab-3-trend">Trend</label>
-							<input type="radio" name="tab-3-viz-option" id="tab-3-trend">
-							<label for="tab-3-distribution">Distribution</label>
-							<input type="radio" name="tab-3-viz-option" id="tab-3-distribution">
-						</fieldset>
-						<h3 class="title">Insurance Premium Comparison</h3>
-						<div id="tab-3-comparison"><!--Insurance Premium Comparison --></div>
-					</div>		
+		<div class="chart-flex-container">
+			<div id="chart-tabs">
+				<ul>
+					<li><a href="#tabs-1">Employee contribution and deductible</a></li>
+					<li><a href="#tabs-2">Employee Total Premium Annual Increase</a></li>
+					<li><a href="#tabs-3">Employee Total vs Household Income Median</a></li>
+				</ul>
+				<div id="tabs-1">
+						<div id="tab-1-chart" class="chart-area">
+							<!--Employee contribution and deductible -->
+						</div>
 				</div>
+				<div id="tabs-2">
+					<div class="chart-flex-container">
+						<div id="tab-2-chart" class="chart-area">
+							<!--Employee Total Premium Annual Increase -->
+						</div>
+					</div>
+				</div>
+				<div id="tabs-3">
+					<div class="chart-flex-container">
+						<div id="tab-3-chart" class="chart-area">
+							<!--Employee Total vs Household Income Median -->
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="tab-controls">
+				<h3 class="title">Visualization Option</h3>
+				<fieldset>
+					<label for="tab-trend">Trend</label>
+					<input type="radio" name="tab-viz-option" id="tab-trend" checked="true">
+					<label for="tab-distribution">Distribution</label>
+					<input type="radio" name="tab-viz-option" id="tab-distribution">
+				</fieldset>
+				<h3 class="title">Insurance Premium Comparison</h3>
+				<div id="tab-comparison"><!--Insurance Premium Comparison --></div>
 			</div>
 		</div>
 	</div>
@@ -138,7 +116,7 @@
 		var subgroups = $("#subgroups");
 		$(".control-panel input").checkboxradio();
 		$("#subgroups input").checkboxradio();
-		$("#chart-tabs input").checkboxradio();
+		$("#tab-controls input").checkboxradio();
 		$("#year-slider").slider({
 			range: "min",
 			value: 2016,

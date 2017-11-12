@@ -53,18 +53,18 @@ ul {
 	background-color: #fff;
 	margin: 0.5em;
 }
-.geo-map-panel, .chart-area {
+.geo-map-panel, #chart-tabs {
 	flex:3;
 	margin: 0.5em;
 }
-.control-panel, .tab-controls {
+.control-panel, #tab-controls {
 	flex: 1;
 	margin: 0.5em;
 }
-#state-set, .tab-controls fieldset {
+#state-set, #tab-controls fieldset {
 	border: 0;
 }
-#state-set label, .tab-controls label, #subgroups label{
+#state-set label, #tab-controls label, #subgroups label{
 	display: block;
     width: 80%;
     margin-bottom: 0.2em;
