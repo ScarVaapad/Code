@@ -17,6 +17,34 @@ h1,h2,h3,h4 {
 	font-family: 'Lato', serif;
 	font-weight: 500;
 }
+/*tool tip style*/
+.d3-tip {
+	line-height: 1;
+	padding: 12px;
+	background: rgba(0, 0, 0, 0.8);
+	color: #fff;
+	border-radius: 2px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+	box-sizing: border-box;
+	display: inline;
+	font-size: 10px;
+	width: 100%;
+	line-height: 1;
+	color: rgba(0, 0, 0, 0.8);
+	content: "\25BC";
+	position: absolute;
+	text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+	margin: -2px 0 0 0;
+	top: 100%;
+	left: 0;
+}
 ul {
 	list-style: none;
 }
@@ -73,4 +101,9 @@ ul {
 .demo-form, #subgroups {
 	margin:0.2em;
 }
-
+.bar rect:hover {
+	fill-opacity: 1;
+}
+.bar-other rect:hover {
+	fill: #666666;
+}

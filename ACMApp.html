@@ -12,6 +12,7 @@
 	<script src="https://npmcdn.com/simple-statistics@2.0.0/dist/simple-statistics.min.js"></script>
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+	<script src="d3-tip.js"></script>
 	<script src="vis.js"></script>
 	<script src="data/data.js"></script>
 </head>
@@ -32,13 +33,13 @@
 			<h3 class="title">Select Focus States</h3>
 			<fieldset id="state-set">
 				<label for="all-states">All</label>
-				<input type="radio" name="states" id="all-states" checked="true">
+				<input type="radio" name="states" id="all-states" checked="true" value="all-states">
 				<label for="rep">Republican States</label>
-				<input type="radio" name="states" id="rep">
+				<input type="radio" name="states" id="rep" value="rep">
 				<label for="dem">Democrat States</label>
-				<input type="radio" name="states" id="dem">
+				<input type="radio" name="states" id="dem" value="dem">
 				<label for="shifter">Shifters from 2012 to 2016</label>
-				<input type="radio" name="states" id="shifter">
+				<input type="radio" name="states" id="shifter" value="shifter">
 			</fieldset>
 			<h3 class="title">Health Insurance Coverage</h3>
 			<p>Select Demographic Segments</p>
@@ -74,9 +75,9 @@
 		<div class="chart-flex-container">
 			<div id="chart-tabs">
 				<ul>
-					<li><a href="#tabs-1">Employee contribution and deductible</a></li>
-					<li><a href="#tabs-2">Employee Total Premium Annual Increase</a></li>
-					<li><a href="#tabs-3">Employee Total vs Household Income Median</a></li>
+					<li><a href="#tabs-1">Employee Contribution and Deductible ($)</a></li>
+					<li><a href="#tabs-2">Employee Total Premium Annual Increase (%)</a></li>
+					<li><a href="#tabs-3">Employee Total vs Household Income Median (%)</a></li>
 				</ul>
 				<div id="tabs-1">
 						<div id="tab-1-chart" class="chart-area">
@@ -100,11 +101,11 @@
 			</div>
 			<div id="tab-controls">
 				<h3 class="title">Visualization Option</h3>
-				<fieldset>
+				<fieldset id="visual-option">
 					<label for="tab-trend">Trend</label>
-					<input type="radio" name="tab-viz-option" id="tab-trend" checked="true">
+					<input type="radio" name="tab-viz-option" id="tab-trend" checked="true" value="trend">
 					<label for="tab-distribution">Distribution</label>
-					<input type="radio" name="tab-viz-option" id="tab-distribution">
+					<input type="radio" name="tab-viz-option" id="tab-distribution" value="distribution">
 				</fieldset>
 				<h3 class="title">Insurance Premium Comparison</h3>
 				<div id="tab-comparison"><!--Insurance Premium Comparison --></div>
@@ -114,9 +115,11 @@
 	<script>
 	$(document).ready(function() {
 		var subgroups = $("#subgroups");
-		$(".control-panel input").checkboxradio();
+		$("#state-set input").checkboxradio();
+        $("#all-states").prop("checked", true).checkboxradio("refresh");
 		$("#subgroups input").checkboxradio();
 		$("#tab-controls input").checkboxradio();
+        $("#tab-trend").prop("checked", true).checkboxradio("refresh");
 		$("#year-slider").slider({
 			range: "min",
 			value: 2016,
@@ -127,11 +130,10 @@
 			}
 		});
 		$("#selected-year").val($("#year-slider").slider("value"));
-		$("#chart-tabs").tabs();
+        $("#chart-tabs").tabs();
 		$("#demgraphic").selectmenu({
 			change: function(event, data){				
 				var id = data.item.value;
-				console.log(id);
 				switch(id) {
 					case "race":
 						subgroups.html('<fieldset><legend>Select Subgroup(s)</legend> <label for="white">White</label> <input id="white" name="white" type="checkbox"> <label for="black">Black</label> <input id="black" name="black" type="checkbox"> <label for="asian">Asian</label> <input id="asian" name="asian" type="checkbox"> <label for="hawaiian">Hawaiian</label> <input id="hawaiian" name="hawaiian" type="checkbox"> <label for="multirace">Multirace</label> <input id="multirace" name="multirace" type="checkbox"> <label for="other">Other</label> <input id="other" name="other" type="checkbox"></fieldset>');
@@ -151,8 +153,25 @@
 				};
 			}
 		});
-		
-	});
+
+        /****** Initialization for SVGs ******/
+        //initVisComp();
+
+
+		/****** Bind events ******/
+		// tab
+        $("#chart-tabs").on("tabsactivate", {dataset: full_data}, compare);
+
+        //control panel (for states)
+        $("#state-set input").on("click", {dataset: full_data}, compare);
+
+        // slider events
+        $("#year-slider").on("slidechange", {dataset: full_data}, compare);
+
+
+
+
+    });
 	</script> 	
 </body>
 </html>
